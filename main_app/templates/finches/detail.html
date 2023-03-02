@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Finch 'tails</h1>
+    <div class="card">
+            <div class="card-content">
+            <span class="card-title">
+                {{ finch.name }}
+                {% if finch.true_finch %}
+                    &check;
+                {% endif %}
+            </span>
+            <p>Species: {{ finch.species }}</p>
+            <p>Description: {{ finch.description | linebreaks }}</p>
+            <p>Length: {{ finch.length }}</p>
+            <p>Wingspan: {{ finch.wingspan }}</p>
+    </div>
+{% endblock %}

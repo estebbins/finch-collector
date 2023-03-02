@@ -1,19 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
     <h1>Finch List</h1>
-    {% for finch in finches %}
-    <div class="card">
-        <div class="card-content">
-        <span class="card-title">
-            {{ finch.name }}
-            {% if finch.true_finch %}
-                &check;
-            {% endif %}
-        </span>
-        <p>Species: {{ finch.species }}</p>
-        <p>Description: {{ finch.description | linebreaks }}</p>
-        <p>Length: {{ finch.length }}</p>
-        <p>Wingspan: {{ finch.wingspan }}</p>
+    <div class="container">
+        <div class="row center-cols center-align" style="width:400px;">
+            {% for finch in finches %}
+                <div class="col">
+                    <div class="card small">
+                        <div class="card-image">
+                            <img src="{{ finch.picture }}" alt="{{ finch.species }}">
+                            <span class="card-title">
+                                {{ finch.name }}
+                                {% if finch.true_finch %}
+                                    &check;
+                                {% endif %}
+                            </span>
+                        </div>
+                        <a href="{% url 'detail' finch.id %}">
+                            <div class="card-content">
+                            <p>Species: {{ finch.species }}</p>
+                            <p>Description: {{ finch.description | linebreaks }}</p>
+                            <p>Length: {{ finch.length }} Wingspan: {{ finch.wingspan }}
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
-    {% endfor %}
 {% endblock %}
