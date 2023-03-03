@@ -2,9 +2,9 @@
 {% block content %}
     <h1>Finch List</h1>
     <div class="container">
-        <div class="row center-cols center-align" style="width:400px;">
+        <div class="row">
             {% for finch in finches %}
-                <div class="col">
+                <div class="col s12 m4">
                     <div class="card small">
                         <div class="card-image">
                             <img src="{{ finch.picture }}" alt="{{ finch.species }}">
@@ -15,16 +15,45 @@
                                 {% endif %}
                             </span>
                         </div>
-                        <a href="{% url 'detail' finch.id %}">
-                            <div class="card-content">
+                        <a class="btn-floating halfway-fab waves-effect waves-light yellow"><i class="material-icons">Edit</i></a>
+                        <div class="card-content">
                             <p>Species: {{ finch.species }}</p>
                             <p>Description: {{ finch.description | linebreaks }}</p>
-                            <p>Length: {{ finch.length }} Wingspan: {{ finch.wingspan }}
-                            </p>
-                        </a>
+                            <p>Length: {{ finch.length }} Wingspan: {{ finch.wingspan }}</p>
+                        </div>
+                        <div class="card-tabs">
+                            <ul class="tabs tabs-fixed-width">
+                              <li class="tab"><a href="#test4">Test 1</a></li>
+                              <li class="tab"><a class="active" href="#test5">Test 2</a></li>
+                              <li class="tab"><a href="#test6">Test 3</a></li>
+                            </ul>
+                          </div>
+                        <div class="card-action">
+                            <a href="{% url 'detail' finch.id %}">View</a>
+                        </div>
                     </div>
                 </div>
             {% endfor %}
         </div>
     </div>
 {% endblock %}
+
+
+
+<div class="card">
+    <div class="card-content">
+      <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+    </div>
+    <div class="card-tabs">
+      <ul class="tabs tabs-fixed-width">
+        <li class="tab"><a href="#test4">Test 1</a></li>
+        <li class="tab"><a class="active" href="#test5">Test 2</a></li>
+        <li class="tab"><a href="#test6">Test 3</a></li>
+      </ul>
+    </div>
+    <div class="card-content grey lighten-4">
+      <div id="test4">Test 1</div>
+      <div id="test5">Test 2</div>
+      <div id="test6">Test 3</div>
+    </div>
+  </div>

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if object %}
+        <h1>Edit <span class="teal-text">{{ object.name }}</span> the <span class="teal-text">{{ object.species }}</span></h1>
+    {% else %}
+        <h1>Add Finch</h1>
+    {% endif %}
+    <!-- By leaving the action empty, this allows the form to submit -->
+    <!-- to the same URL that was used to render it. The submit changes to the HTTP to POST -->
+    <form action="" method="POST">
+        {% csrf_token %}
+            {% for field in form %}
+            <label>
+                {% if field.label == "True finch" %}
+                    {{field}}
+                    <span>{{field.label}}?</span> <!-- if boolean field, span must be after input (in materialize) -->
+                    <br>
+                {% else %}
+                    <span>{{field.label}}</span> <!-- description before input if not boolean field -->
+                    {{field}}
+                {% endif %}
+            </label>
+            {% endfor %}
+        <input type="submit" value="Submit!" class="btn">
+    </form>
+{% endblock %}

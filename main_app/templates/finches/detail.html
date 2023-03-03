@@ -13,5 +13,9 @@
             <p>Description: {{ finch.description | linebreaks }}</p>
             <p>Length: {{ finch.length }}</p>
             <p>Wingspan: {{ finch.wingspan }}</p>
+            <div class="card-action">
+                <a href="{% url 'finch_update' finch.id %}">Edit</a>
+                <a href="{% url 'finch_delete' finch.id %}">Delete</a>
+            </div>
     </div>
 {% endblock %}
